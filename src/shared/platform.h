@@ -16,6 +16,10 @@
 #define PRFILESYSTEM_PATH "s"
 #endif
 
+#if defined(_DARWIN_FEATURE_ONLY_64_BIT_INODE)
+# define stat64 stat
+#endif
+
 namespace cd
 {
 	struct ISO_DATESTAMP;

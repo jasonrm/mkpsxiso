@@ -15,6 +15,12 @@ set(CMAKE_MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>")
 set(CMAKE_C_STANDARD           11)
 set(CMAKE_CXX_STANDARD         17)
 
+if(CMAKE_SYSTEM_NAME STREQUAL "Darwin")
+	set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -stdlib=libc++")
+	set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -stdlib=libc++")
+	set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -lc++ -lc++abi")
+endif()
+
 # Useful paths
 set(mkpsxiso_dir "src/mkpsxiso")
 set(dumpsxiso_dir "src/dumpsxiso")
